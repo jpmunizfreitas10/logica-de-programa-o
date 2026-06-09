@@ -1,0 +1,104 @@
+programa
+
+{
+
+
+	funcao inicio()
+
+	{
+
+	    inteiro opcao = 1
+
+	  real total_pedido = 0
+
+enquanto (opcao!=4) {
+
+escreva("\n  Menu Dos Pedidos  \n")
+
+escreva("1 - Hamburger (R$ 25,00)\n")
+
+escreva("2 - Batata Frita (R$ 15,00)\n")
+
+escreva("3 - Refrigerante (R$ 10,00)\n")
+
+escreva("4 - Finalizar Pedido\n")
+
+escreva("Escolha uma opção: ")
+
+leia(opcao)
+
+
+
+escolha(opcao)
+
+{
+
+	caso 1:
+
+	   total_pedido = total_pedido + 25
+
+	   escreva("Hamburguer adicionado!\n")
+
+	   pare
+
+
+
+	 caso 2:
+
+	    total_pedido = total_pedido + 15
+
+	    escreva("Batata Frita adicionada!\n")
+
+	    pare
+
+
+
+	  caso 3: 
+
+	     total_pedido = total_pedido + 10 
+
+	     escreva("Refrigerante adicionado!\n")
+
+
+
+	   caso 4:
+
+	     escreva("/nFinalizando pedido\n")
+
+	     pare
+
+
+
+	     caso contrario:
+
+	     escreva("Opcao invalida! Tente novamente.\n")
+
+	 
+
+}
+
+escreva("Total atual: R$ ", total_pedido, "\n")
+
+escreva("\n Nota Fiscal \n")
+
+
+
+para(inteiro contador = 1; contador <= 5; contador++)
+
+{
+
+	escreva("Imprimindo cupom fiscal ", contador, "\n")
+
+}
+
+
+
+
+
+	}
+
+	escreva("Sistema encerrado!\n")
+
+}
+
+}

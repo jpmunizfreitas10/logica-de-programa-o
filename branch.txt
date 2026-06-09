@@ -1,0 +1,5 @@
+Uma branch é uma cópia da linha principal de um projeto usada para desenvolver alterações de forma independente.
+Ela permite criar funcionalidades ou corrigir erros sem afetar o sistema principal.
+Seu objetivo é manter o desenvolvimento organizado e seguro.
+Por exemplo, pode ser usada para corrigir um bug de login ou criar uma nova funcionalidade.
+Também permite que vários desenvolvedores trabalhem ao mesmo tempo no mesmo projeto.

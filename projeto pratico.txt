@@ -1,0 +1,305 @@
+programa
+{
+	funcao inicio()
+	{
+		inteiro hpJogador = 150
+		inteiro estamina = 100
+
+		inteiro horda = 1
+		inteiro zumbis = 1
+
+		inteiro hpZumbiAtual = 30
+
+		inteiro municao = 36
+
+		inteiro molotov = 3
+		inteiro kit = 2
+		inteiro atadura = 5
+		inteiro energetico = 2
+
+		inteiro acao
+		inteiro opcao
+		inteiro dano
+		inteiro critico
+
+		enquanto(hpJogador > 0 e horda <= 20)
+		{
+			
+			escreva("\n THE APOCALYPSE \n")
+			
+			escreva("\n HP: ", hpJogador)
+			escreva("\n Estamina: ", estamina)
+			escreva("\n Municao: ", municao)
+			escreva("\n Horda: ", horda)
+			escreva("\n Zumbis restantes: ", zumbis)
+			escreva("\n HP do zumbi atual: ", hpZumbiAtual)
+
+			escreva("\n\n1 - Atacar")
+			escreva("\n2 - Defender")
+			escreva("\n3 - Mochila")
+			escreva("\nEscolha: ")
+			leia(acao)
+
+			// ATAQUE
+			se(acao == 1)
+			{
+				escreva("\n1 - Arma de Fogo")
+				escreva("\n2 - Catana")
+				escreva("\n Escolha: ")
+				leia(opcao)
+
+				se(opcao == 1)
+				{
+					se(municao > 0)
+					{
+						municao--
+
+						dano = 30
+						hpZumbiAtual = hpZumbiAtual - dano
+
+						escreva("\n tiro certeiro! ", dano, " de dano.")
+					}
+					senao
+					{
+						escreva("\n voce esta sem municao!")
+					}
+				}
+
+				senao se(opcao == 2)
+				{
+					critico = sorteia(1,10)
+
+					se(critico == 10)
+					{
+						dano = 20
+						escreva("\n critico na cabeça")
+					}
+					senao
+					{
+						dano = 15
+					}
+
+					hpZumbiAtual = hpZumbiAtual - dano
+
+					escreva("\n catana causou ", dano, " de dano.")
+				}
+			}
+
+			// DEFESA
+			senao se(acao == 2)
+			{
+				escreva("\n1 - Escudo")
+				escreva("\n2 - Correr")
+				escreva("\n Escolha: ")
+				leia(opcao)
+
+				se(opcao == 1)
+				{
+					hpJogador = hpJogador + 15
+
+					se(hpJogador > 150)
+					{
+						hpJogador = 150
+					}
+
+					escreva("\n escudo utilizado! +15 HP.")
+				}
+
+				senao se(opcao == 2)
+				{
+					se(estamina >= 25)
+					{
+						estamina = estamina - 25
+
+						escreva("\nVoce correu e evitou o ataque da horda!")
+						escreva("\nVoce ganhou duas acoes seguidas!")
+
+						
+					}
+					senao
+					{
+						escreva("\nEstamina insuficiente!")
+					}
+				}
+			}
+
+			// MOCHILA
+			senao se(acao == 3)
+			{
+				escreva("\n MOCHILA ")
+				escreva("\n1 - Molotov (", molotov, ")")
+				escreva("\n2 - Kit Medico (", kit, ")")
+				escreva("\n3 - Atadura (", atadura, ")")
+				escreva("\n4 - Energetico (", energetico, ")")
+				escreva("\nEscolha: ")
+				leia(opcao)
+
+				se(opcao == 1)
+				{
+					se(molotov > 0)
+					{
+						molotov--
+
+						hpZumbiAtual = hpZumbiAtual - 30
+
+						escreva("\n Molotov utilizado! 30 de dano.")
+					}
+					senao
+					{
+						escreva("\n Voce nao possui mais molotovs!")
+					}
+				}
+
+				senao se(opcao == 2)
+				{
+					se(kit > 0)
+					{
+						kit--
+
+						hpJogador = hpJogador + 50
+
+						se(hpJogador > 150)
+						{
+							hpJogador = 150
+						}
+
+						escreva("\n Kit Medico utilizado!")
+					}
+					senao
+					{
+						escreva("\n Kits medicos esgotados!")
+					}
+				}
+
+				senao se(opcao == 3)
+				{
+					se(atadura > 0)
+					{
+						atadura--
+
+						hpJogador = hpJogador + 20
+
+						se(hpJogador > 150)
+						{
+							hpJogador = 150
+						}
+
+						escreva("\n Atadura utilizada!")
+					}
+					senao
+					{
+						escreva("\n 1lAtaduras esgotadas!")
+					}
+				}
+
+				senao se(opcao == 4)
+				{
+					se(energetico > 0)
+					{
+						energetico--
+
+						estamina = estamina + 50
+
+						se(estamina > 100)
+						{
+							estamina = 100
+						}
+
+						escreva("\nEnergetico utilizado!")
+					}
+					senao
+					{
+						escreva("\nEnergeticos esgotados!")
+					}
+				}
+			}
+
+			// MORTE DE UM ZUMBI
+			se(hpZumbiAtual <= 0)
+			{
+				zumbis--
+
+				escreva("\nUm zumbi foi eliminado!")
+
+				se(zumbis > 0)
+				{
+					se(horda >= 15)
+					{
+						hpZumbiAtual = 50
+					}
+					senao
+					{
+						hpZumbiAtual = 30
+					}
+				}
+			}
+
+			// FIM DA HORDA
+			se(zumbis <= 0)
+			{
+				escreva("\n\nHORDA ELIMINADA!")
+
+				horda++
+
+				se(horda <= 20)
+				{
+					zumbis = 1 + ((horda - 1) * 3)
+
+					se(horda >= 15)
+					{
+						hpZumbiAtual = 50
+						escreva("\nOs zumbis agora usam armaduras!")
+					}
+					senao
+					{
+						hpZumbiAtual = 30
+					}
+
+					// DROPS
+					se(sorteia(1,100) <= 30)
+					{
+						municao = municao + 5
+						escreva("\nDrop encontrado: +5 municoes!")
+					}
+
+					se(sorteia(1,100) <= 20)
+					{
+						atadura++
+						escreva("\nDrop encontrado: +1 Atadura!")
+					}
+				}
+			}
+			senao
+			{
+				// ATAQUE DOS ZUMBIS
+				dano = zumbis * 2
+
+				se(horda >= 15)
+				{
+					dano = dano + 10
+				}
+
+				hpJogador = hpJogador - dano
+
+				escreva("\nA horda atacou!")
+				escreva("\nVoce sofreu ", dano, " de dano.")
+			}
+		}
+
+		escreva("\n\n================================")
+
+		se(horda > 20)
+		{
+			escreva("\nVITORIA!")
+			escreva("\nVoce sobreviveu ao apocalipse zumbi!")
+			escreva("\nSeu nome sera lembrado pelos sobreviventes.")
+		}
+		senao
+		{
+			escreva("\nGAME OVER")
+			escreva("\nVoce nao resistiu a horda zumbi.")
+		}
+
+		escreva("\n================================")
+	}
+}

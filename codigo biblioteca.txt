@@ -1,0 +1,27 @@
+programa
+{
+	
+inclua biblioteca Matematica --> m
+	inclua biblioteca Util --> u
+	inclua biblioteca Texto --> tx
+	funcao inicio ()
+	{
+		real numero2
+		real numero1
+		real maior
+		real menor
+		cadeia texto = "sorteando "
+		cadeia escrita = "resultado"
+		escreva (tx.caixa_alta(texto))
+		escreva (tx.caixa_baixa(escrita))
+		numero1 = u.sorteia(0, 10)
+		escreva("\nO primeiro número é ", numero1, "\n")
+		numero2 = u.sorteia(0, 10)
+		escreva("\nO segundo número é ", numero2, "\n")
+		maior = m.maior_numero(numero1, numero2)
+		menor = m.menor_numero(numero1, numero2)
+		u.aguarde (3000)
+		escreva("\nO maior número é", maior, "\n")
+		escreva("\nO menor número é", menor, "\n")
+	}
+}

@@ -12,7 +12,7 @@ programa {
         inteiro quantidade
         enquanto (opcao != 3)
         {
-           escreva("1 - Emitir Relatório de Ativos\n")
+           escreva("1 - Emitir RelatÃ³rio de Ativos\n")
             escreva("2 - Registrar Recebimento de equipamento\n")
             escreva("3 - Encerrar Sistema\n")
             leia (opcao)
@@ -21,18 +21,18 @@ programa {
             
             {
               caso 1: 
-                escreva("Relatório de Ativos\n")
+                escreva("RelatÃ³rio de Ativos\n")
                 para ( inteiro i = 0; i < 3; i++)
                 
                 {
                   escreva("ID: ", i, "\n")
                    escreva("Equipamento: ", equipamentos[i], "\n")
                         escreva("Quantidade atual: ", estoque[i][0], "\n")
-                        escreva("Quantidade mínima: ", estoque[i][1], "\n")
+                        escreva("Quantidade mÃ­nima: ", estoque[i][1], "\n")
 
                         se (estoque[i][0] < estoque[i][1])
                         {
-                          escreva  ("Estoque crítico! Necessário abrir chamado de compra.")
+                          escreva  ("Estoque crÃ­tico! NecessÃ¡rio abrir chamado de compra.")
                         }
                 }
                 pare
@@ -52,7 +52,7 @@ programa {
                    }
                    senao
                    {
-                    escreva("\n ID inválido")
+                    escreva("\n ID invÃ¡lido")
                    }
 
                    pare
@@ -64,7 +64,7 @@ programa {
 
                      caso contrario:
 
-                     escreva("\n Opção inválida. Digite 1, 2 ou 3 \n")
+                     escreva("\n OpÃ§Ã£o invÃ¡lida. Digite 1, 2 ou 3 \n")
 
             }
         }
